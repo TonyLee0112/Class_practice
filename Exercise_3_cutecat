@@ -1,0 +1,51 @@
+class cutecat{
+  //constructor
+  cutecat() {};
+  cutecat(float p, float q){
+    x = p; y = q; s = 200;
+  }
+  cutecat(float p, float q, float r){
+    x = p; y = q; s = r;
+  }
+  //member data
+  float x,y,s;
+  
+  //member function
+  void display(){
+  fill(194,197,204,180);
+  ellipse(x,y,s,s);
+  fill(255,255,255);
+  ellipse(x+s*0.25,y - s*0.15,40,40);
+  fill(255,255,255);
+  ellipse(x-s*0.25,y - s*0.15,40,40);
+  arc(x,y+s*0.15,75,75,0,PI,PIE);
+  strokeWeight(3);
+  line(x - s*0.4, y - s*0.05, x - s*0.55, y - s*0.2);  // 10 direction
+  strokeWeight(3);
+  line(x - s*0.5, y + s*0.05, x-s*0.65, y + s*0.05); // 9
+  strokeWeight(3);
+  line(x - s*0.4, y + s*0.15, x-s*0.55, y+s*0.3); // 7
+  strokeWeight(3);
+  line(x + s*0.4, y - s*0.1, x+s*0.55, y-s*0.25);
+  strokeWeight(3);
+  line(x + s*0.4, y + s*0.05, x+s*0.65, y + s*0.05);
+  strokeWeight(3);
+  line(x + s*0.4, y + s*0.15, x + s*0.55, y+s*0.3);
+  fill(0,0,0);
+  arc(x - s * 0.275, y - s * 0.35, 35, 35, PI-QUARTER_PI, TWO_PI-QUARTER_PI, PIE);
+  fill(0,0,0);
+  ellipse(x - s * 0.25, y - s * 0.15, 10, 10);
+  fill(0,0,0);
+  ellipse(x + s * 0.25, y - s * 0.15, 10, 10);
+  }
+}
+
+cutecat c1;
+void setup(){
+  size(1000,1000);
+  c1 = new cutecat(500,500);
+}
+void draw(){
+  background(255);
+  c1.display();
+}
