@@ -1,0 +1,10 @@
+void setup(){
+   student suho, jinhun, hyunjung ;
+   suho = new student();
+   jinhun = new student();
+   hyunjung = new student();
+   suho.test();
+   jinhun.test();
+   hyunjung.test();
+   
+}
