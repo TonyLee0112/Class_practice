@@ -1,9 +1,0 @@
-class student {
-  student(){w = 60; h = 180 ; grade = (int) random(60,101) ;}
-  float w,h,r;
-  int grade;
-  void test() {
-      if (grade > 80) println("Good!!");
-      else {println("Study!!");}  
-  }
-}
