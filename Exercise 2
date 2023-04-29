@@ -1,42 +1,51 @@
-smile [] exs;
-float [] speedx,speedy;
-
-void setup(){
-  size(600,300);
-  speedx = new float[3];
-  speedy = new float[3];
-  for (int i = 0; i<3 ; i ++){
-     speedx[i] = (float) random(-10,10);
-     speedy[i] = (float) random(-10,10);
-     print(speedx);
-     print(speedy);
-    }
-}
-void draw(){
-  background(120);
-  exs = new smile[3];
-  for (int i = 0; i<3 ; i ++){
-    exs[i] = new smile(100+speedx[i],150+speedy[i],100+50*i);
-    exs[i].Life();
-  }
-}
-
 class smile {
   
   // constructor
   smile() { }; //if 0 input
   smile(float p, float q, float r){
     x = p; y = q; d = r;
+    speed = random(1, 5);
+    xdirection = random(-1, 1);
+    ydirection = random(-1, 1); 
   }
   
   //member data 
-  float x,y,d;
+  float x,y,d,speed,xdirection,ydirection;
 
   void Life(){
+
+    x += speed * xdirection;
+    y += speed * ydirection;
+
+    if (x + d/2 >= width || x - d/2 <= 0) {
+      xdirection *= -1; // turn direction
+    }
+    if (y + d/2 >= height || y - d/2 <= 0) {
+      ydirection *= -1; // turn direction
+    }
+    
     ellipse(x,y,d,d/3*2);
     circle(x-d/5,y-d/6,d/5);
     arc(x+d/5, y-d/6, d/5, d/5, PI, 2*PI);
     arc(x,y,d*2/3, d/5 , 0 , PI);
   }
   
+}
+
+smile [] s;
+
+
+void setup() {
+  size(600, 300);
+  s = new smile[3];
+  for (int i = 0; i<3;i++){
+    s[i] = new smile(random(width), random(height), random(50, 150));
+  }
+}
+
+void draw() {
+  background(120);
+  for (int i = 0; i<3;i++){
+      s[i].Life();
+}
 }
