@@ -1,3 +1,26 @@
+smile [] exs;
+float [] speedx,speedy;
+
+void setup(){
+  size(600,300);
+  speedx = new float[3];
+  speedy = new float[3];
+  for (int i = 0; i<3 ; i ++){
+     speedx[i] = (float) random(-10,10);
+     speedy[i] = (float) random(-10,10);
+     print(speedx);
+     print(speedy);
+    }
+}
+void draw(){
+  background(120);
+  exs = new smile[3];
+  for (int i = 0; i<3 ; i ++){
+    exs[i] = new smile(100+speedx[i],150+speedy[i],100+50*i);
+    exs[i].Life();
+  }
+}
+
 class smile {
   
   // constructor
