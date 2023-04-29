@@ -12,10 +12,10 @@ class Siha {
   // determine locations of Sihas
   void act() { 
     x += vx; y += vy;
-    if (x > width) x = 0;
-    if (x < 0) x = width;
-    if (y > height) y =0;
-    if (y< 0) y = height;
+    if (x > width-d/2) x = d/2;
+    if (x < d/2) x = width-d/2;
+    if (y > height-d/3) y = d/3;
+    if (y< d/3) y = height-d/3;
   }
 
   void Life(){
