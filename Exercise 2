@@ -42,6 +42,6 @@ void draw() {
   background(120);
   for (int i = 0; i<10;i++){
     s[i].act();  // Move location
-    s[i].Life(); // Draw at the changed location
+    s[i].Life(); // Display at the changed location
 }
 }
