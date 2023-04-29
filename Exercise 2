@@ -1,29 +1,22 @@
-class smile {
+class Siha {
   
   // constructor
-  smile() { }; //if 0 input
-  smile(float p, float q, float r){
-    x = p; y = q; d = r;
-    speed = random(1, 5);
-    xdirection = random(-1, 1);
-    ydirection = random(-1, 1); 
+  Siha() { }; //if 0 input
+ Siha(float p, float q, float r){
+    x = p; y = q; d = r; vx = random(-5,5); vy = random(-5,5);
   }
   
   //member data 
-  float x,y,d,speed,xdirection,ydirection;
+  float x,y,d,vx,vy;
+  
+  // determine locations of Sihas
+  void act() { 
+    x += vx; y += vy;
+    if (x < d/2 || x > width - d/2) vx *= -1;
+    if (y < d/2 || y > height - d/2) vy *= -1;
+  }
 
   void Life(){
-
-    x += speed * xdirection;
-    y += speed * ydirection;
-
-    if (x + d/2 >= width || x - d/2 <= 0) {
-      xdirection *= -1; // turn direction
-    }
-    if (y + d/2 >= height || y - d/2 <= 0) {
-      ydirection *= -1; // turn direction
-    }
-    
     ellipse(x,y,d,d/3*2);
     circle(x-d/5,y-d/6,d/5);
     arc(x+d/5, y-d/6, d/5, d/5, PI, 2*PI);
@@ -32,20 +25,21 @@ class smile {
   
 }
 
-smile [] s;
+Siha [] s;
 
 
 void setup() {
   size(600, 300);
-  s = new smile[3];
+  s = new Siha[3];
   for (int i = 0; i<3;i++){
-    s[i] = new smile(random(width), random(height), random(50, 150));
+    s[i] = new Siha(random(width), random(height), random(50, 150));
   }
 }
 
 void draw() {
   background(120);
   for (int i = 0; i<3;i++){
-      s[i].Life();
+    s[i].act();  
+    s[i].Life();
 }
 }
