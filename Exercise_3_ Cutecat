@@ -17,10 +17,10 @@ class Cutecat{
   
   void act() { 
     x += vx; y += vy;
-    if(x<0) vx = random(1,3);
-    if(x>width) vx = random(-3,-1);
-    if(y<0) vy = random(1,3);
-    if(y>height) vy = random(-3,-1);
+    if(x<0) vx = random(3,5);
+    if(x>width) vx = random(-5,-3);
+    if(y<0) vy = random(3,5);
+    if(y>height) vy = random(-5,-3);
   }
   
   void display(){
@@ -49,5 +49,32 @@ class Cutecat{
   ellipse(x - s * 0.25, y - s * 0.15, 0.05*s, 0.05*s);
   fill(0,0,0);
   ellipse(x + s * 0.25, y - s * 0.15, 0.05*s, 0.05*s);
+  }
+void collision(Dooly dd){
+    float dx = x - dd.x;
+    float dy = y - dd.y;
+    float temp;
+    if(dx*dx+dy*dy < s*s/2){
+      temp = vx;
+      vx = dd.vx;
+      dd.vx = temp;
+      temp = vy;
+      vy = dd.vy;
+      dd.vy = temp;
+    }
+}
+
+void collision(Spidy ee){
+    float dx = x - ee.x;
+    float dy = y - ee.y;
+    float temp;
+    if(dx*dx+dy*dy < s*s/2){
+      temp = vx;
+      vx = ee.vx;
+      ee.vx = temp;
+      temp = vy;
+      vy = ee.vy;
+      ee.vy = temp;
+    }
   }
 }
