@@ -1,0 +1,170 @@
+Cutecat c1;
+Spidy c2;
+Dooly c3;
+void setup(){
+  size(1000,1000);
+  c1 = new Cutecat(random(width), random(height), random(50, 150));
+  c2 = new Spidy(random(width), random(height), random(50, 150));
+  c3 = new Dooly(random(width), random(height), random(50, 150));
+}
+void draw(){
+  background(255);
+  
+  c1.act();
+  c1.display();
+  
+  c2.act();
+  c2.display();
+  
+  c3.act();
+  c3.display();
+  
+}
+
+class Cutecat{
+  //constructor
+  Cutecat(){
+  x = width/2 ; y = height/2; s = 200;
+  vx = random(-5,5); vy = random(-5,5);
+  }
+  Cutecat(float p, float q){
+    x = p; y = q; s = 200; vx = random(-5,5); vy = random(-5,5);
+  }
+  Cutecat(float p, float q, float r){
+    x = p; y = q; s = r; vx = random(-5,5); vy = random(-5,5);
+  }
+  //member data
+  float x,y,s,vx,vy;
+  
+  //member function
+  
+  void act() { 
+    x += vx; y += vy;
+    if (x > width) x = 0;
+    if (x < 0) x = width;
+    if (y > height) y = 0;
+    if (y< 0) y = height;
+  }
+  
+  void display(){
+  fill(194,197,204,180);
+  ellipse(x,y,s,s);
+  fill(255,255,255);
+  ellipse(x+s*0.25,y - s*0.15,0.2*s,0.2*s);
+  fill(255,255,255);
+  ellipse(x-s*0.25,y - s*0.15,0.2*s,0.2*s);
+  arc(x,y+s*0.15,0.375*s,0.375*s,0,PI,PIE);
+  strokeWeight(3);
+  line(x - s*0.4, y - s*0.05, x - s*0.55, y - s*0.2);
+  strokeWeight(3);
+  line(x - s*0.5, y + s*0.05, x-s*0.65, y + s*0.05);
+  strokeWeight(3);
+  line(x - s*0.4, y + s*0.15, x-s*0.55, y+s*0.3);
+  strokeWeight(3);
+  line(x + s*0.4, y - s*0.1, x+s*0.55, y-s*0.25);
+  strokeWeight(3);
+  line(x + s*0.4, y + s*0.05, x+s*0.65, y + s*0.05);
+  strokeWeight(3);
+  line(x + s*0.4, y + s*0.15, x + s*0.55, y+s*0.3);
+  fill(0,0,0);
+  arc(x - s * 0.275, y - s * 0.35, 0.175*s, 0.175*s, PI-QUARTER_PI, TWO_PI-QUARTER_PI, PIE);
+  fill(0,0,0);
+  ellipse(x - s * 0.25, y - s * 0.15, 0.05*s, 0.05*s);
+  fill(0,0,0);
+  ellipse(x + s * 0.25, y - s * 0.15, 0.05*s, 0.05*s);
+  }
+}
+
+class Dooly{
+  //constructor
+  Dooly(){
+  x = width/2 ; y = height/2; s = 200;
+  vx = random(-5,5); vy = random(-5,5);}
+  Dooly(float p,float q){
+  x = p; y = q; s = 200;vx = random(-5,5); vy = random(-5,5);
+}
+  Dooly(float p,float q, float d){
+    x = p; y = q; s = d; vx = random(-5,5); vy = random(-5,5);
+  }
+  
+  // member data
+  float x,y,s,vx,vy;
+  
+  void act() { 
+    x += vx; y += vy;
+    if (x > width) x = 0;
+    if (x < 0) x = width;
+    if (y > height) y = 0;
+    if (y< 0) y = height;
+  }
+  
+  //member function
+  void display(){
+  noStroke();
+  fill(0,200,0);
+  ellipse(x,y,s,s * 1.15);
+  circle(x-s*0.2, y+s*0.15, s*0.75);
+  circle(x+s*0.2, y+s*0.15, s*0.75);
+  stroke(0);
+  fill(0);
+  circle(x-s*0.15, y-s*0.1, s*0.1);
+  circle(x+s*0.15, y-s*0.1, s*0.1);
+  noFill();
+  bezier(x-s*0.35,y+s*0.25, x-s*0.25,y+s*0.5, x+s*0.25,y+s*0.5, x+s*0.35,y+s*0.25);
+}
+}
+
+class Spidy {
+  //constructor
+  Spidy(){
+  x = width/2 ; y = height/2; d2 = 200;
+  vx = random(-5,5); vy = random(-5,5);
+}
+  Spidy(float p, float q){ 
+  x = p; y = q; d2 = 200; vx = random(-5,5); vy = random(-5,5);
+}
+  Spidy(float p,float q, float u){
+  x = p ; y = q ; d2 = u; vx = random(-5,5); vy = random(-5,5);
+}
+  
+  // member data
+  float x, y, d2, vx, vy;
+  
+  // member function
+  void act() { 
+    x += vx; y += vy;
+    if (x > width) x = 0;
+    if (x < 0) x = width;
+    if (y > height) y = 0;
+    if (y< 0) y = height;
+  }
+  
+  void display(){
+  fill(177, 19, 19);
+  circle(x, y, d2);
+  line(x-d2/2, y, x+d2/2, y);
+  line(x, y-d2/2, x, y+d2/2);
+  line(x-d2*0.4, y+d2*0.3, x+d2*0.4, y-d2*0.3); 
+  line(x-d2*0.4, y-d2*0.3, x+d2*0.4, y+d2*0.3); 
+
+  arc(x - 0.1*d2, y - 0.15*d2, d2*0.2, d2*0.15, 0, PI / 2); 
+  arc(x - 0.1*d2, y + 0.15*d2, d2*0.2, d2*0.15, 3 * PI / 2, 2 * PI);
+  arc(x + 0.1*d2, y - 0.15*d2, d2*0.2, d2*0.15, PI / 2, PI);
+  arc(x + 0.1*d2, y + 0.15*d2, d2*0.2, d2*0.15, PI, 3 * PI / 2);
+
+  arc(x - 0.26*d2, y - 0.35*d2, d2*0.52, d2*0.31, 0, PI / 2);
+  arc(x - 0.26*d2, y + 0.35*d2, d2*0.52, d2*0.31, 3 * PI / 2, 2 * PI);
+  arc(x + 0.26*d2, y - 0.35*d2, d2*0.52, d2*0.31, PI / 2, PI);
+  arc(x + 0.26*d2, y + 0.35*d2, d2*0.52, d2*0.31, PI, 3 * PI / 2);
+
+  arc(x - 0.15*d2, y - 0.075*d2, 0.1*d2, 0.15*d2, 0, PI / 2);
+  arc(x - 0.15*d2, y + 0.075*d2, 0.1*d2, 0.15*d2, 3 * PI / 2, 2 * PI);
+  arc(x + 0.15*d2, y - 0.075*d2, 0.1*d2, 0.15*d2, PI / 2, PI);
+  arc(x + 0.15*d2, y + 0.075*d2, 0.1*d2, 0.15*d2, PI, 3 * PI / 2);
+
+  arc(x - 0.35*d2, y - 0.195*d2, 0.18*d2, 0.39*d2, 0, PI / 2);
+  arc(x - 0.35*d2, y + 0.195*d2, 0.18*d2, 0.39*d2, 3 * PI / 2, 2 * PI);
+  arc(x + 0.35*d2, y - 0.195*d2, 0.18*d2, 0.39*d2, PI / 2, PI);
+  arc(x + 0.35*d2, y + 0.195*d2, 0.18*d2, 0.39*d2, PI, 3 * PI / 2);
+}
+}
