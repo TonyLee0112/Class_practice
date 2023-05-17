@@ -1,5 +1,6 @@
 Cutecat cat, cat2;
 Simpson sim, sim2;
+
 void setup() {
   size(1000, 1000);
   cat = new Cutecat(random(width), random(height), 100);
@@ -22,20 +23,15 @@ void draw() {
   
   sim2.move(mouseX,mouseY);
   sim2.display();
-  
-  
 }
 void keyPressed() {
-  if (keyCode == UP) {
+  if (keyCode == 'W') {
     cat.y -= 2 * cat.vy;
-  } else if (keyCode == DOWN) {
+  } else if (keyCode == 'S') {
     cat.y += 2 * cat.vy;
-  } else if (keyCode == LEFT) {
+  } else if (keyCode == 'A') {
     cat.x -= 2 * cat.vx;
-  } else if (keyCode == RIGHT) {
+  } else if (keyCode == 'D') {
     cat.x += 2 * cat.vx;
   }
 }
-
-
-  
